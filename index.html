@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="vue_study.css">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <input type="text" v-model="TaskName">
+      <button v-on:click="AddEvent">追加</button>
+      <div v-for="(TaskList,index) in array">
+        <div v-if="array.length > 0" class="task-item">          
+          <!-- divでgrid作る？ -->
+          <span id="task-item" v-bind:class="{DeleteLine:TaskList.Check}">{{TaskList.Task}}</span> 
+          <button id="delete-button" v-on:click="DeleteEvent(index)">削除</button>
+          <button id="finish-button" v-on:click="TaskList.Check=!TaskList.Check">完了</button>
+        </div>
+        <div v-else>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el:"#app",
+    data: {
+      array: []
+    },
+    methods:{
+      AddEvent(){
+        var TaskRow={
+          Task:this.TaskName,
+          Check:false
+        }
+        this.array.push(TaskRow)
+        // 何でthisが必要？
+        this.TaskName=''
+      },
+      DeleteEvent(index){
+        this.array.splice(index,1)
+      },
+    }
+})
+</script>

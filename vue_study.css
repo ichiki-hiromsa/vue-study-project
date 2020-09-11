@@ -1,0 +1,25 @@
+.DeleteLine{
+  text-decoration: line-through;
+}
+
+#task-item{
+  grid-area: task-item;
+}
+
+#delete-button{
+  grid-area: delete-button;
+}
+
+#finish-button{
+  grid-area: finish-button;
+}
+
+.task-item{
+  display:grid;
+  width:100%;
+  align-items: center;/* ⇕中央寄せ */
+  grid-template:
+  "... ... ..."10px
+  "task-item delete-button finish-button" 30px
+  /200px 50px 50px ;
+}

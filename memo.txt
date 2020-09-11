@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      {{message}}
+      <input type="text" v-model="message">
+      <button v-on:click="testFunc">ボタン</button>
+      <div v-for="name in array">
+        {{name}}
+      </div>
+  </div>
+
+</body>
+</html>
+<script>
+  var app = new Vue({
+    el:"#app",
+    data: {
+      message:'Hello Vue!',
+      array: ["木下","上の","市来"]
+    },
+    methods:{
+      testFunc(){
+        this.message = 'Hello World'
+        // alert("aaa")
+        this.array.push(this.message)
+      }
+    }
+  })
+</script>
